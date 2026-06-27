@@ -126,7 +126,8 @@ const pedido = ref({ usuario: '', productos: [] });
 
 const ejecutarLogin = async () => {
   try {
-    const respuesta = await api.post('login/', loginData.value);
+    // CORRECCIÓN: Cambiado de 'login/' a 'token/' para compatibilidad estricta con Simple JWT
+    const respuesta = await api.post('token/', loginData.value);
     localStorage.setItem('token', respuesta.data.access);
     estaAutenticado.value = true;
     await sincronizar();
